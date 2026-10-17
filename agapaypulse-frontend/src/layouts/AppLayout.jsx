@@ -180,15 +180,20 @@ export default function AppLayout() {
           aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white hover:bg-white/10"
+          className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
         >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <Menu aria-hidden="true" className={`absolute h-5 w-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${mobileOpen ? 'rotate-90 scale-75 opacity-0' : 'rotate-0 scale-100 opacity-100'}`} />
+          <X aria-hidden="true" className={`absolute h-5 w-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${mobileOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-75 opacity-0'}`} />
         </button>
       </header>
 
-      {mobileOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-slate-950/35 md:hidden" onClick={() => setMobileOpen(false)}>
-          <nav id="mobile-navigation" aria-label="Main navigation" onClick={(event) => event.stopPropagation()} className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-teal-800 bg-teal-950 p-4 text-white shadow-xl">
+      <div
+        className={`fixed inset-0 top-16 z-40 bg-slate-950/35 transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden ${mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen}
+      >
+          <nav id="mobile-navigation" aria-label="Main navigation" onClick={(event) => event.stopPropagation()} className={`max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-teal-800 bg-teal-950 p-4 text-white shadow-xl transition-[opacity,transform] duration-200 ease-out origin-top motion-reduce:transition-none ${mobileOpen ? 'translate-y-0 scale-y-100 opacity-100' : '-translate-y-2 scale-y-95 opacity-0'}`}>
             <p className="mb-3 px-3 text-xs font-semibold uppercase text-teal-300">{user?.name}</p>
             <div className="space-y-1">
               {navItems.map((item) => {
@@ -209,8 +214,7 @@ export default function AppLayout() {
               <LogOut className="h-4 w-4" /> Sign out
             </button>
           </nav>
-        </div>
-      )}
+      </div>
 
       {/* Main Content Render View */}
       <main className="min-w-0 flex-1">
