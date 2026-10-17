@@ -97,9 +97,9 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[radial-gradient(ellipse_at_top_left,_#e6f4ee_0%,_#f5f8f7_38%,_#f3f7f5_100%)] md:fixed md:inset-0 md:flex-row md:overflow-hidden">
+    <div className="min-h-dvh flex flex-col bg-[radial-gradient(ellipse_at_top_left,_#e6f4ee_0%,_#f5f8f7_38%,_#f3f7f5_100%)] md:flex-row">
       {/* Desktop Navigation Sidebar */}
-      <aside className="hidden w-[272px] shrink-0 flex-col justify-between border-r border-white/10 bg-[linear-gradient(165deg,#123f3d_0%,#0d302f_55%,#092726_100%)] text-white shadow-[12px_0_40px_rgba(13,48,47,0.08)] md:h-full md:overflow-y-auto md:flex">
+      <aside className="hidden w-[272px] shrink-0 flex-col justify-between border-r border-white/10 bg-[linear-gradient(165deg,#123f3d_0%,#0d302f_55%,#092726_100%)] text-white shadow-[12px_0_40px_rgba(13,48,47,0.08)] md:flex">
         <div>
           <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-teal-200/30 bg-gradient-to-br from-teal-300/20 to-emerald-300/5 shadow-inner">
@@ -213,7 +213,7 @@ export default function AppLayout() {
       )}
 
       {/* Main Content Render View */}
-      <main className="min-h-0 min-w-0 flex-1 md:h-full md:overflow-y-auto">
+      <main className="min-w-0 flex-1">
         <div className="sticky top-0 z-30 hidden items-center justify-between border-b border-slate-200/70 bg-white/75 px-8 py-3 backdrop-blur-xl md:flex">
           <div className="flex items-center gap-2 text-sm text-slate-500">
             <span className="font-medium capitalize">{user?.role}</span>
