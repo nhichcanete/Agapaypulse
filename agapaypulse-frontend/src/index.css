@@ -17,19 +17,25 @@
 }
 
 html {
+  height: 100%;
   min-width: 320px;
   scroll-behavior: smooth;
+  background-color: var(--color-canvas);
 }
 
 body {
+  height: 100%;
   min-width: 320px;
-  min-height: 100vh;
   margin: 0;
   background-color: var(--color-canvas);
   font-family: var(--font-sans);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100%;
 }
 
 button,
